@@ -40,7 +40,9 @@ export function AppHeader() {
             >
               <Avatar>
                 <AvatarImage src="https://placehold.co/32x32.png" data-ai-hint="male portrait" alt="@user" />
-                <AvatarFallback>U</AvatarFallback>
+                <AvatarFallback>
+                  <User className="h-5 w-5" />
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
