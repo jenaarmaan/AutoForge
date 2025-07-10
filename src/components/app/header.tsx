@@ -14,16 +14,18 @@ import {
   PanelLeft,
   Settings,
   User,
+  Workflow
 } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { useSidebar } from '@/components/ui/sidebar';
+import { cn } from '@/lib/utils';
 
 export function AppHeader() {
   const { toggleSidebar } = useSidebar();
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
       <Button
         size="icon"
         variant="outline"
@@ -33,6 +35,13 @@ export function AppHeader() {
         <PanelLeft className="h-5 w-5" />
         <span className="sr-only">Toggle Menu</span>
       </Button>
+       <a
+          href="/dashboard"
+          className={cn("hidden items-center gap-2 font-semibold text-lg sm:flex")}
+        >
+          <Workflow className="h-6 w-6 text-primary" />
+          <span className="font-bold">AutoForge</span>
+        </a>
       <div className="flex flex-1 items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -42,7 +51,7 @@ export function AppHeader() {
               className="overflow-hidden rounded-full"
             >
               <Avatar>
-                <AvatarImage src="https://placehold.co/32x32.png" alt="@user" />
+                <AvatarImage src="https://placehold.co/32x32.png" data-ai-hint="male portrait" alt="@user" />
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
             </Button>
