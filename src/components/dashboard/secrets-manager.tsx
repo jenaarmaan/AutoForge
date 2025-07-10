@@ -23,7 +23,7 @@ export function SecretsManager() {
             Securely store credentials for your pipeline.
           </CardDescription>
         </div>
-        <Button variant="ghost" size="sm" disabled>
+        <Button variant="ghost" size="sm">
           <PlusCircle className="mr-2 h-4 w-4" />
           Add
         </Button>
@@ -53,24 +53,24 @@ export function SecretsManager() {
                     <div className="flex justify-end gap-1">
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Button variant="ghost" size="icon" disabled>
+                          <Button variant="ghost" size="icon">
                             <Pencil className="h-4 w-4" />
                             <span className="sr-only">Edit</span>
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Edit Secret (disabled)</p>
+                          <p>Edit Secret</p>
                         </TooltipContent>
                       </Tooltip>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Button variant="ghost" size="icon" disabled>
+                          <Button variant="ghost" size="icon">
                             <Trash2 className="h-4 w-4" />
                             <span className="sr-only">Delete</span>
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Delete Secret (disabled)</p>
+                          <p>Delete Secret</p>
                         </TooltipContent>
                       </Tooltip>
                     </div>
