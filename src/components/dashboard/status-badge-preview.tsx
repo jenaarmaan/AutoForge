@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
-type Status = 'success' | 'failure' | 'in-progress' | 'pending';
+type Status = 'success' | 'failure' | 'in-progress' | 'pending' | 'running';
 
 interface StatusBadgePreviewProps {
   status: Status;
@@ -13,11 +13,13 @@ const statusConfig: Record<Status, { text: string; className: string }> = {
   success: { text: 'passing', className: 'bg-accent text-accent-foreground hover:bg-accent/90' },
   failure: { text: 'failing',className: 'bg-destructive text-destructive-foreground hover:bg-destructive/90' },
   'in-progress': { text: 'in-progress', className: 'bg-primary/80 text-primary-foreground animate-pulse' },
+  running: { text: 'in-progress', className: 'bg-primary/80 text-primary-foreground animate-pulse' },
   pending: { text: 'pending', className: 'bg-muted text-muted-foreground' },
 };
 
 export function StatusBadgePreview({ status }: StatusBadgePreviewProps) {
-  const { text, className } = statusConfig[status];
+  const config = statusConfig[status] || statusConfig.pending;
+  const { text, className } = config;
 
   return (
     <Card className="shadow-md">
