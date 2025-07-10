@@ -48,6 +48,7 @@
 
 ## 🛠️ How It Works
 
+
 ```mermaid
 graph TD;
     A[Developer Pushes Code] --> B[GitHub Actions Triggered];
