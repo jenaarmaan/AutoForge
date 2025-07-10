@@ -24,7 +24,7 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
        <a
-          href="/dashboard"
+          href="/"
           className={cn("flex items-center gap-2 font-semibold text-lg")}
         >
           <Workflow className="h-6 w-6 text-primary" />
