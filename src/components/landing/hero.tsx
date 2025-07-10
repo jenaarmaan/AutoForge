@@ -18,7 +18,7 @@ export function Hero() {
             <a href="/dashboard">Get Started</a>
           </Button>
           <Button size="lg" variant="outline" className="bg-white text-[#4285F4] hover:bg-white/90 hover:text-[#4285F4]" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            <a href="https://github.com/jenaarmaan/AutoForge" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           </Button>
         </div>
       </div>
