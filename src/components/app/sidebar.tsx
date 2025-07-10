@@ -6,13 +6,15 @@ import {
   FileText,
   Settings,
   LifeBuoy,
+  LayoutDashboard
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const menuItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: Home },
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/deployments', label: 'Deployments', icon: Rocket },
   { href: '/dashboard/logs', label: 'Logs', icon: FileText },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
