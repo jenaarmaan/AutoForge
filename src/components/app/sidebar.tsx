@@ -6,20 +6,8 @@ import {
   FileText,
   Settings,
   LifeBuoy,
-  Workflow,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarTrigger,
-  useSidebar,
-} from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -32,38 +20,25 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
-  const { isMobile, state } = useSidebar();
   const pathname = usePathname();
 
   return (
-    <Sidebar>
-      <SidebarHeader className={cn("flex items-center", isMobile ? "p-2" : "p-2 justify-center")}>
-        <a
-          href="/dashboard"
-          className={cn("flex items-center gap-2 font-semibold text-lg")}
-        >
-          <Workflow className="h-6 w-6 text-primary" />
-          <span className={cn("font-bold", state === 'collapsed' && !isMobile && "hidden")}>AutoForge</span>
-        </a>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarMenu>
-          {menuItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname === item.href}
-                tooltip={{ children: item.label, side: 'right' }}
-              >
-                <a href={item.href}>
-                  <item.icon />
-                  <span>{item.label}</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarContent>
-    </Sidebar>
+    <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
+      <nav className="flex flex-col gap-2 p-4">
+        {menuItems.map((item) => (
+          <Button
+            key={item.href}
+            variant={pathname === item.href ? 'default' : 'ghost'}
+            className="justify-start"
+            asChild
+          >
+            <a href={item.href}>
+              <item.icon className="mr-2 h-4 w-4" />
+              {item.label}
+            </a>
+          </Button>
+        ))}
+      </nav>
+    </aside>
   );
 }

@@ -11,7 +11,6 @@ import {
 import {
   LifeBuoy,
   LogOut,
-  PanelLeft,
   Settings,
   User,
   Workflow
@@ -19,25 +18,14 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { useSidebar } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
 export function AppHeader() {
-  const { toggleSidebar } = useSidebar();
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
-      <Button
-        size="icon"
-        variant="outline"
-        className="sm:hidden"
-        onClick={toggleSidebar}
-      >
-        <PanelLeft className="h-5 w-5" />
-        <span className="sr-only">Toggle Menu</span>
-      </Button>
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
        <a
           href="/dashboard"
-          className={cn("hidden items-center gap-2 font-semibold text-lg sm:flex")}
+          className={cn("flex items-center gap-2 font-semibold text-lg")}
         >
           <Workflow className="h-6 w-6 text-primary" />
           <span className="font-bold">AutoForge</span>

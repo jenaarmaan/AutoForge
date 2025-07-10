@@ -2,6 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowUpRight, CheckCircle, Clock, FileText, Package, Server, XCircle } from 'lucide-react';
+import { PipelineTracker } from '@/components/dashboard/pipeline-tracker';
+import { SecretsManager } from '@/components/dashboard/secrets-manager';
+import { StatusBadgePreview } from '@/components/dashboard/status-badge-preview';
+import React from 'react';
 
 const recentDeployments = [
   { id: 'dpl_1a2b3c', commit: 'feat: add user auth', branch: 'main', status: 'success', time: '5m ago' },
@@ -23,29 +27,27 @@ const StatusIcon = ({ status }: { status: string }) => {
 };
 
 export default function DashboardPage() {
+  const [pipelineStatus, setPipelineStatus] = React.useState<any>('pending');
+
   return (
-    <div className="flex w-full flex-col">
-      <main className="flex flex-1 flex-col gap-4 md:gap-8">
-        <div className="rounded-xl border bg-card text-card-foreground shadow-sm">
-          <div className="p-6 md:p-8 lg:p-10">
-            <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              Automate Your Cloud Deployments with Confidence
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              AutoForge streamlines your CI/CD pipeline, enabling you to build, test, and deploy code faster and more reliably.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Start Deployment
-              </Button>
-              <Button size="lg" variant="outline">
-                View Logs
-              </Button>
-            </div>
+    <div className="flex w-full flex-col gap-8">
+       <div>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground">Welcome back! Here's what's happening with your deployments.</p>
+       </div>
+        
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <PipelineTracker onStatusChange={setPipelineStatus} />
+          </div>
+          <div className="space-y-6">
+            <StatusBadgePreview status={pipelineStatus} />
+            <SecretsManager />
           </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
-          <Card className="rounded-xl">
+
+        <div className="grid gap-6 md:grid-cols-2">
+           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg font-medium">Recent Deployments</CardTitle>
                <Button asChild variant="ghost" size="sm" className="flex items-center gap-1 text-sm">
@@ -70,22 +72,7 @@ export default function DashboardPage() {
               </div>
             </CardContent>
           </Card>
-          <div className="grid gap-4 md:gap-8">
-            <Card className="rounded-xl">
-              <CardHeader className="pb-2">
-                <CardDescription>Deployment Status</CardDescription>
-                <CardTitle className="text-4xl flex items-center gap-2">
-                  <CheckCircle className="h-10 w-10 text-accent" />
-                  <span>All Systems Go</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-xs text-muted-foreground">
-                  Last check: 2 minutes ago
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="rounded-xl">
+           <Card>
                <CardHeader className="pb-2">
                 <CardTitle className="text-lg font-medium">System Health</CardTitle>
               </CardHeader>
@@ -107,9 +94,7 @@ export default function DashboardPage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
         </div>
-      </main>
     </div>
   )
 }
